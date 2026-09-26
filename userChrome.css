@@ -1,0 +1,167 @@
+/* ==========================================================================
+   TSUGUMORI NERV - VERTICAL RIGHT SIDEBAR COMMAND CENTER (EV0)
+   ========================================================================== */
+
+:root {
+    --toolbar-bgcolor: rgba(5, 5, 5, 0.95) !important;
+    --neon-red: #ff003c !important;
+    --neon-red-dim: rgba(255, 0, 60, 0.2) !important;
+}
+
+/* --------------------------------------------------------------------------
+   1. HIDE NATIVE TABS AND TITLEBAR (Minimalist UI)
+   -------------------------------------------------------------------------- */
+#TabsToolbar, #titlebar, .titlebar-buttonbox-container {
+    display: none !important;
+    visibility: collapse !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. THE SIDEBAR CONTAINER (Formerly Top Toolbar)
+   -------------------------------------------------------------------------- */
+#navigator-toolbox {
+    -moz-user-focus: normal !important; /* Crucial: Allows click-to-focus on the toolbox */
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    width: 400px !important;
+    z-index: 9999 !important;
+    
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    
+    /* Cybernetic Grid */
+    background-color: var(--toolbar-bgcolor) !important;
+    background-image: 
+        linear-gradient(rgba(255, 0, 60, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 60, 0.15) 1px, transparent 1px) !important;
+    background-size: 20px 20px !important;
+    
+    border-left: 2px solid var(--neon-red) !important;
+    border-bottom: none !important;
+    box-shadow: -10px 0px 30px rgba(255, 0, 60, 0.4) !important;
+    
+    /* SLIDING MECHANICS */
+    margin-right: -400px !important; /* Hidden off-screen by default */
+    transition: margin-right 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s !important;
+}
+
+/* STRICTLY CLICK-TO-OPEN: Prevents auto-opening when New Tab focuses the URL bar */
+#navigator-toolbox:focus,
+#navigator-toolbox:focus-within:hover {
+    margin-right: 0px !important; /* Visible state */
+}
+
+/* --------------------------------------------------------------------------
+   3. THE SECRET CORNER BUTTON (Click Target)
+   -------------------------------------------------------------------------- */
+#navigator-toolbox::after {
+    content: "";
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 25px !important;
+    height: 25px !important;
+    background: radial-gradient(circle at center, rgba(255, 0, 60, 0.4) 10%, transparent 70%) !important;
+    border: none !important;
+    cursor: crosshair !important;
+    z-index: 2147483647 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+/* Hide the button visually when the sidebar is open to prevent clutter */
+#navigator-toolbox:focus::after,
+#navigator-toolbox:focus-within::after {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. URL BAR REDESIGN (Search Box)
+   -------------------------------------------------------------------------- */
+#nav-bar {
+    padding: 20px 10px 10px 10px !important;
+    width: 100% !important;
+}
+
+#nav-bar-customization-target {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    gap: 10px !important;
+}
+
+#urlbar-container {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 0 15px 0 !important;
+}
+
+#urlbar-background {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border: 1px solid var(--neon-red) !important;
+    border-radius: 0px !important;
+    box-shadow: inset 0 0 15px var(--neon-red-dim) !important;
+}
+
+#urlbar-input {
+    color: var(--neon-red) !important;
+    font-family: 'Orbitron', monospace !important;
+    font-size: 1em !important;
+    text-align: left !important;
+    padding-left: 10px !important;
+    font-weight: bold !important;
+}
+
+/* Force URL bar to behave */
+#urlbar { position: static !important; }
+#urlbar[breakout][breakout-extend] {
+    position: static !important; width: 100% !important; top: auto !important; left: auto !important;
+}
+
+.urlbar-icon, .urlbar-input-box, #urlbar-search-button, .toolbarbutton-icon {
+    fill: var(--neon-red) !important;
+    color: var(--neon-red) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. BOOKMARKS STYLING (Vertical List)
+   -------------------------------------------------------------------------- */
+#PersonalToolbar {
+    background-color: transparent !important;
+    padding: 0px 10px 20px 10px !important;
+    width: 100% !important;
+}
+
+#PlacesToolbarItems {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+toolbarbutton.bookmark-item {
+    color: var(--neon-red) !important;
+    font-family: 'Orbitron', monospace !important;
+    font-size: 0.9em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    
+    width: 100% !important;
+    text-align: left !important;
+    padding: 12px 10px !important;
+    border-bottom: 1px solid var(--neon-red-dim) !important;
+    margin: 0 !important;
+}
+
+toolbarbutton.bookmark-item:hover {
+    background-color: var(--neon-red-dim) !important;
+    border-radius: 0px !important;
+}

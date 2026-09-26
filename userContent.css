@@ -1,0 +1,64 @@
+/* TSUGUMORI NERV - CINEMATIC PAGE LOAD TRANSITION */
+
+@keyframes full-wipe-out {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(100%); }
+}
+
+/* LAYER 1: The Red Screen with Massive Kanji (WARNING) */
+body::after {
+    content: "警 告" !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    
+    /* Deep crimson with physical TV scanlines */
+    background: repeating-linear-gradient(
+        0deg,
+        #ff003c,
+        #ff003c 4px,
+        #cc0030 4px,
+        #cc0030 8px
+    ) !important;
+    
+    color: #050505 !important;
+    font-family: 'Noto Sans CJK JP', 'Orbitron', sans-serif !important;
+    font-size: 25vw !important;
+    font-weight: 900 !important;
+    line-height: 100vh !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    
+    z-index: 2147483646 !important;
+    pointer-events: none !important;
+    
+    transform: translateX(0%);
+    animation: full-wipe-out 0.4s cubic-bezier(0.8, 0, 0.2, 1) 0.1s forwards !important;
+}
+
+/* LAYER 2: The White English Terminal Subtitle */
+body::before {
+    content: "SYSTEM OVERRIDE // MAGI PROTOCOL ENGAGED" !important;
+    position: fixed !important;
+    top: 65vh !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 35vh !important;
+    
+    color: #ffffff !important;
+    font-family: 'Orbitron', 'Courier New', monospace !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    letter-spacing: 8px !important;
+    text-align: center !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
+    
+    z-index: 2147483647 !important;
+    pointer-events: none !important;
+    
+    transform: translateX(0%);
+    animation: full-wipe-out 0.4s cubic-bezier(0.8, 0, 0.2, 1) 0.1s forwards !important;
+}
