@@ -6,7 +6,7 @@
 }
 
 /* LAYER 1: The Red Screen with Massive Kanji (WARNING) */
-body::after {
+body:not(.dashboard-body)::after {
     content: "警 告" !important;
     position: fixed !important;
     top: 0 !important;
@@ -40,7 +40,7 @@ body::after {
 }
 
 /* LAYER 2: The White English Terminal Subtitle */
-body::before {
+body:not(.dashboard-body)::before {
     content: "SYSTEM OVERRIDE // MAGI PROTOCOL ENGAGED" !important;
     position: fixed !important;
     top: 65vh !important;
