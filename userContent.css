@@ -7,7 +7,7 @@
 
 /* LAYER 1: The Red Screen with Massive Kanji (WARNING) */
 body:not(.dashboard-body)::after {
-    content: "0 1 0 1" !important;
+    content: "警 告" !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -17,10 +17,10 @@ body:not(.dashboard-body)::after {
     /* Deep crimson with physical TV scanlines */
     background: repeating-linear-gradient(
         0deg,
-        #00ff41,
-        #00ff41 4px,
-        #003b00 4px,
-        #003b00 8px
+        #ff003c,
+        #ff003c 4px,
+        #cc0030 4px,
+        #cc0030 8px
     ) !important;
     
     color: #050505 !important;
@@ -41,7 +41,7 @@ body:not(.dashboard-body)::after {
 
 /* LAYER 2: The White English Terminal Subtitle */
 body:not(.dashboard-body)::before {
-    content: "SYSTEM COMPROMISED // WAKE UP, NEO..." !important;
+    content: "SYSTEM OVERRIDE // MAGI PROTOCOL ENGAGED" !important;
     position: fixed !important;
     top: 65vh !important;
     left: 0 !important;
